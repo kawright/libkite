@@ -6,28 +6,37 @@ import subprocess
 import sys
 import tarfile
 
-VERSION_NUMBER = "v0.1.0"
+VERSION_NUMBER = "v0.2.0"
 
 SOURCE_OBJECTS = {
-    "kite_ErrorState.o": "src/error/source/kite_ErrorState.c"
+    "kite_ErrorState.o": "src/error/source/kite_ErrorState.c",
+    "kite_Quiz.o": "src/quiz/source/kite_Quiz.c"
 }
 
 INCLUDE_FILES = {
     "libkite.h": "src/libkite.h",
 
     "kite_error.h": "src/error/kite_error.h",
+    "kite_quiz.h": "src/quiz/kite_quiz.h",
 
     "kite_ErrorCode.h": "src/error/include/kite_ErrorCode.h",
-    "kite_ErrorState.h": "src/error/include/kite_ErrorState.h"
+    "kite_ErrorState.h": "src/error/include/kite_ErrorState.h",
+    "kite_Quiz.h": "src/quiz/include/kite_Quiz.h"
 }
 
 INCLUDE_PATHS = [
     "src",
 
     "src/error",
+    "src/quiz",
 
-    "src/error/include"
+    "src/error/include",
+    "src/quiz/include"
 ]
+
+TESTS = {
+    "test_Quiz": "test/test_Quiz.c"
+}
 
 def main():
 
@@ -41,6 +50,7 @@ def main():
     subprocess.call(["mkdir", "build/object"], stdout=subprocess.DEVNULL)
     subprocess.call(["mkdir", "build/object/static"], stdout=subprocess.DEVNULL)
     subprocess.call(["mkdir", "build/object/shared"], stdout=subprocess.DEVNULL)
+    subprocess.call(["mkdir", "build/object/test"], stdout=subprocess.DEVNULL)
     subprocess.call(["mkdir", "build/bin"], stdout=subprocess.DEVNULL)
     subprocess.call(["mkdir", "build/bin/static"], stdout=subprocess.DEVNULL)
     subprocess.call(["mkdir", "build/bin/static/include"], 
@@ -48,6 +58,7 @@ def main():
     subprocess.call(["mkdir", "build/bin/shared"], stdout=subprocess.DEVNULL)
     subprocess.call(["mkdir", "build/bin/shared/include"], 
         stdout=subprocess.DEVNULL)
+    subprocess.call(["mkdir", "build/bin/test"], stdout=subprocess.DEVNULL)
 
     print("DONE!")
     
@@ -95,6 +106,30 @@ def main():
     arg_list = ["gcc", "-shared", "-o", "build/bin/shared/libkite.so"]
     arg_list.extend(shared_object_files)
     subprocess.call(arg_list)
+    print("DONE!")
+
+    print("Building test binaries...", end="")
+    for outfile, infile in TESTS.items():
+        arg_list = [
+            "gcc", 
+            "-c", 
+            infile, 
+            "-o", 
+            "build/object/test/{}.o".format(outfile)]
+        for include_path in INCLUDE_PATHS:
+            arg_list.append("-I")
+            arg_list.append(include_path)
+        subprocess.call(arg_list)
+        arg_list = [
+            "gcc",
+            "-o",
+            "build/bin/test/{}".format(outfile),
+            "build/object/test/{}.o".format(outfile),
+            "-I",
+            "src"]
+        arg_list.extend(static_object_files)
+        subprocess.call(arg_list)
+        arg_list = ["sudo", "chmod", "+x", "build/bin/test/{}".format(outfile)]
     print("DONE!")
     
     print("Archiving static binaries...", end="")

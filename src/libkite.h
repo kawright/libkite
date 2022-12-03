@@ -15,3 +15,4 @@ Precompiler directives
 */
 
 #include "kite_error.h"
+#include "kite_quiz.h"

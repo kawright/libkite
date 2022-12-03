@@ -1,5 +1,5 @@
 /**
- * @file        kite_Quiz.c
+ * @file        kite_Quiz.h
  * @author      Kristoffer A. Wright (kris.al.wright@gmail.com)
  * @brief       This file defines an API for performing small individual unit
  *              tests called quizzes, which exist at the level of individual
@@ -40,7 +40,7 @@ void kite_Quiz_init(
  *          stdout.
  * 
  */
-void kite_Quiz_finish();
+int kite_Quiz_finish();
 
 /*
 ================================================================================
@@ -90,8 +90,8 @@ Equality tests
  */
 void kite_Quiz_isEqualInt(
         char*   name, 
-        int     expected, 
-        int     real);
+        int     real, 
+        int     expected);
         
 /**
  * @brief               Test if a given `float` value is equal to an expected
@@ -103,8 +103,8 @@ void kite_Quiz_isEqualInt(
  */
 void kite_Quiz_isEqualFloat(
         char*   name,
-        float   expected,
-        float   real);
+        float   real,
+        float   expected);
 
 /**
  * @brief               Test if a given `char` value is equal to an expected
@@ -116,8 +116,8 @@ void kite_Quiz_isEqualFloat(
  */
 void kite_Quiz_isEqualChar(
         char*   name,
-        char    expected,
-        char    real);
+        char    real,
+        char    expected);
 
 /**
  * @brief               Test if a given string value is equal to an expected
@@ -129,8 +129,8 @@ void kite_Quiz_isEqualChar(
  */
 void kite_Quiz_isEqualString(
         char*   name,
-        char*   expected,
-        char*   real);
+        char*   real,
+        char*   expected);
 
 /*
 ================================================================================
@@ -148,8 +148,8 @@ Inequality tests
  */
 void kite_Quiz_isNotEqualInt(
         char*   name, 
-        int     expected, 
-        int     real);
+        int     real, 
+        int     expected);
 
 /**
  * @brief               Test if a given `float` value is not equal to an
@@ -161,8 +161,8 @@ void kite_Quiz_isNotEqualInt(
  */
 void kite_Quiz_isNotEqualFloat(
         char*   name,
-        float   expected,
-        float   real);
+        float   real,
+        float   expected);
 
 /**
  * @brief               Test if a given `char` value is not equal to an expected
@@ -174,8 +174,8 @@ void kite_Quiz_isNotEqualFloat(
  */
 void kite_Quiz_isNotEqualChar(
         char*   name,
-        char    expected,
-        char    real);
+        char    real,
+        char    expected);
 
 /**
  * @brief               Test if a given string value is not equal to an expected
@@ -187,8 +187,8 @@ void kite_Quiz_isNotEqualChar(
  */
 void kite_Quiz_isNotEqualString(
         char*   name,
-        char*   expected,
-        char*   real);
+        char*   real,
+        char*   expected);
 
 /*
 ================================================================================
@@ -206,8 +206,8 @@ Less-than tests
  */
 void kite_Quiz_isLessThanInt(
         char*   name, 
-        int     expected, 
-        int     real);
+        int     real, 
+        int     expected);
 
 /**
  * @brief               Test if a given `float` value is less than an expected
@@ -219,8 +219,8 @@ void kite_Quiz_isLessThanInt(
  */
 void kite_Quiz_isLessThanFloat(
         char*   name, 
-        float   expected, 
-        float   real);
+        float   real, 
+        float   expected);
 
 /**
  * @brief               Test if a given `char` value is less than an expected
@@ -232,8 +232,8 @@ void kite_Quiz_isLessThanFloat(
  */
 void kite_Quiz_isLessThanChar(
         char*   name, 
-        char    expected, 
-        char    real);
+        char    real, 
+        char    expected);
 
 /**
  * @brief               Test if a given string value is less than an expected
@@ -245,8 +245,8 @@ void kite_Quiz_isLessThanChar(
  */
 void kite_Quiz_isLessThanString(
         char*   name,
-        char*   expected,
-        char*   real);
+        char*   real,
+        char*   expected);
 
 /*
 ================================================================================
@@ -264,8 +264,8 @@ Less-than-or-equal-to tests
  */
 void kite_Quiz_isLessThanOrEqualToInt(
         char*   name,
-        int     expected,
-        int     real);
+        int     real,
+        int     expected);
 
 /**
  * @brief               Test if a given `float` value is less-than-or-equal-to
@@ -277,8 +277,8 @@ void kite_Quiz_isLessThanOrEqualToInt(
  */
 void kite_Quiz_isLessThanOrEqualToFloat(
         char*   name,
-        float   expected,
-        float   real);
+        float   real,
+        float   expected);
 
 /**
  * @brief               Test if a given `char` value is less-than-or-equal-to
@@ -290,8 +290,8 @@ void kite_Quiz_isLessThanOrEqualToFloat(
  */
 void kite_Quiz_isLessThanOrEqualToChar(
         char*   name,
-        char    expected,
-        char    real);
+        char    real,
+        char    expected);
 
 /**
  * @brief               Test if a given string value is less-than-or-equal-to
@@ -303,8 +303,8 @@ void kite_Quiz_isLessThanOrEqualToChar(
  */
 void kite_Quiz_isLessThanOrEqualToString(
         char*   name,
-        char*   expected,
-        char*   real);
+        char*   real,
+        char*   expected);
 
 /*
 ================================================================================
@@ -322,8 +322,8 @@ Greater-than tests
  */
 void kite_Quiz_isGreaterThanInt(
         char*   name,
-        int     expected,
-        int     real);
+        int     real,
+        int     expected);
 
 /**
  * @brief               Test if a given `float` value is greater than an
@@ -335,8 +335,8 @@ void kite_Quiz_isGreaterThanInt(
  */
 void kite_Quiz_isGreaterThanFloat(
         char*   name,
-        float   expected,
-        float   real);
+        float   real,
+        float   expected);
 
 /**
  * @brief               Test if a given `char` value is greater than an
@@ -348,8 +348,8 @@ void kite_Quiz_isGreaterThanFloat(
  */
 void kite_Quiz_isGreaterThanChar(
         char*   name,
-        char    expected,
-        char    real);
+        char    real,
+        char    expected);
 
 
 /**
@@ -362,8 +362,8 @@ void kite_Quiz_isGreaterThanChar(
  */
 void kite_Quiz_isGreaterThanString(
         char*   name,
-        char*   expected,
-        char*   real);
+        char*   real,
+        char*   expected);
 
 /*
 ================================================================================
@@ -381,8 +381,8 @@ Greater-than-or-equal-to tests
  */
 void kite_Quiz_isGreaterThanOrEqualToInt(
         char*   name,
-        int     expected,
-        int     real);
+        int     real,
+        int     expected);
 
 
 /**
@@ -395,8 +395,8 @@ void kite_Quiz_isGreaterThanOrEqualToInt(
  */
 void kite_Quiz_isGreaterThanOrEqualToFloat(
         char*   name,
-        float   expected,
-        float   real);
+        float   real,
+        float   expected);
 
 /**
  * @brief               Test if a given `char` value 
@@ -408,8 +408,8 @@ void kite_Quiz_isGreaterThanOrEqualToFloat(
  */
 void kite_Quiz_isGreaterThanOrEqualToChar(
         char*   name,
-        char    expected,
-        char    real);
+        char    real,
+        char    expected);
 
 /**
  * @brief               Test if a given string value 
@@ -421,8 +421,8 @@ void kite_Quiz_isGreaterThanOrEqualToChar(
  */
 void kite_Quiz_isGreaterThanOrEqualToString(
         char*   name,
-        char*   expected,
-        char*   real);
+        char*   real,
+        char*   expected);
 
 /*
 ================================================================================
