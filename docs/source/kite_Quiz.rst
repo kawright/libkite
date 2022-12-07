@@ -74,7 +74,7 @@ These tests are used for validating equality between two values.
 
 .. c:function:: void kite_Quiz_isEqualInt(char* name, int real, int expected)
 
-    Test that two given `int` values are equal.
+    Test that a given `int` value is equal to an expected `int` value.
 
     :param name:        The name of the test.
     :param real:        The given value which is being tested.
@@ -82,7 +82,7 @@ These tests are used for validating equality between two values.
 
 .. c:function:: void kite_Quiz_isEqualFloat(char* name, float real, float expected)
 
-    Test that two given `float` values are equal.
+    Test that a given `float` value is equal to an expected `float` value.
 
     :param name:        The name of the test.
     :param real:        The given value which is being tested.
@@ -90,7 +90,7 @@ These tests are used for validating equality between two values.
 
 .. c:function:: void kite_Quiz_isEqualChar(char* name, char real, char expected)
 
-    Test that two given `char` values are equal.
+    Test that a given `char` value is equal to an expected `char` value.
 
     :param name:        The name of the test.
     :param real:        The given value which is being tested.
@@ -98,8 +98,233 @@ These tests are used for validating equality between two values.
 
 .. c:function:: void kite_Quiz_isEqualString(char* name, char* real, char* expected)
 
-    Test that two given string values are equal.
+    Test that a given string value is equal to an expected string value.
+
+    Two strings are considered equivalent if all characters
 
     :param name:        The name of the test.
     :param real:        The given value which is being tested.
     :param expected:    The expected value which is being tested against.
+
+Inequality Tests
+----------------
+
+These tests are used for validating inequality between two values.
+
+.. c:function:: void kite_Quiz_isNotEqualInt(char* name, int real, int expected)
+
+    Test that two given `int` values are not equal.
+
+    :param name:        The name of the test.
+    :param real:        The given value which is being tested.
+    :param expected:    The expected value which is being tested against.
+
+.. c:function:: void kite_Quiz_isNotEqualFloat(char* name, float real, float expected)
+
+    Test that two given `float` values are not equal.
+
+    :param name:        The name of the test.
+    :param real:        The given value which is being tested.
+    :param expected:    The expected value which is being tested against.
+
+.. c:function:: void kite_Quiz_isNotEqualChar(char* name, char real, char expected)
+
+    Test that two given `char` values not are equal.
+
+    :param name:        The name of the test.
+    :param real:        The given value which is being tested.
+    :param expected:    The expected value which is being tested against.
+
+.. c:function:: void kite_Quiz_isNotEqualString(char* name, char* real, char* expected)
+
+    Test that two given string values not are equal.
+
+    :param name:        The name of the test.
+    :param real:        The given value which is being tested.
+    :param expected:    The expected value which is being tested against.
+
+Less-than Tests
+---------------
+
+These tests are used for validating that a given test value is less-than an 
+expected control value.
+
+.. c:function:: void kite_Quiz_isLessThanInt(char* name, int real, int expected)
+
+    Test that a given `int` is less than an expected `int` value.
+
+    :param name:        The name of the test.
+    :param real:        The given value which is being tested.
+    :param expected:    The expected value which is being tested against.
+
+.. c:function:: void kite_Quiz_isLessThanFloat(char* name, float real, float expected)
+
+    Test that a given `float` is less than an expected `float` value.
+
+    :param name:        The name of the test.
+    :param real:        The given value which is being tested.
+    :param expected:    The expected value which is being tested against.
+
+.. c:function:: void kite_Quiz_isLessThanChar(char* name, char real, char expected)
+
+    Test that a given `char` is less than an expected `char` value.
+
+    :param name:        The name of the test.
+    :param real:        The given value which is being tested.
+    :param expected:    The expected value which is being tested against.
+
+.. c:function:: void kite_Quiz_isLessThanString(char* name, char* real, char* expected)
+
+    Test that a given String is less than an expected String value. A given test
+    string is considered less-than a control string if its first non-matching
+    character's ASCII code is less than the control's at the same position.
+
+    :param name:        The name of the test.
+    :param real:        The given value which is being tested.
+    :param expected:    The expected value which is being tested against.
+
+Less-than-or-equal-to Tests
+---------------------------
+
+These tests are used for validating that a given test value is less-than-or-
+equal-to an expected control value.
+
+.. c:function:: void kite_Quiz_isLessThanOrEqualToInt(char* name, int real, int expected)
+
+    Test that a given `int` is less-than-or-equal-to an expected `int` value.
+
+    :param name:        The name of the test.
+    :param real:        The given value which is being tested.
+    :param expected:    The expected value which is being tested against.
+
+.. c:function:: void kite_Quiz_isLessThanOrEqualToFloat(char* name, float real, float expected)
+
+    Test that a given `float` is less-than-or-equal-to an expected `float` 
+    value.
+
+    :param name:        The name of the test.
+    :param real:        The given value which is being tested.
+    :param expected:    The expected value which is being tested against.
+
+.. c:function:: void kite_Quiz_isLessThanOrEqualToChar(char* name, char real, char expected)
+
+    Test that a given `char` is less-than-or-equal-to an expected `char` value.
+
+    :param name:        The name of the test.
+    :param real:        The given value which is being tested.
+    :param expected:    The expected value which is being tested against.
+
+.. c:function:: void kite_Quiz_isLessThanOrEqualToString(char* name, char* real, char* expected)
+
+    Test that a given String is less-than-or-equal-to an expected String value. 
+    A given test string is considered less-than-or-equal-to a control string if 
+    its first non-matching character's ASCII code is less-than-or-equal-to the 
+    control's at the same position.
+
+    :param name:        The name of the test.
+    :param real:        The given value which is being tested.
+    :param expected:    The expected value which is being tested against.
+
+Greater-than Tests
+------------------
+
+These tests are used for validating that a given test value is greater-than an 
+expected control value.
+
+.. c:function:: void kite_Quiz_isGreaterThanInt(char* name, int real, int expected)
+
+    Test that a given `int` is greater-than an expected `int` value.
+
+    :param name:        The name of the test.
+    :param real:        The given value which is being tested.
+    :param expected:    The expected value which is being tested against.
+
+.. c:function:: void kite_Quiz_isGreaterThanFloat(char* name, float real, float expected)
+
+    Test that a given `float` is greater-than an expected `float` value.
+
+    :param name:        The name of the test.
+    :param real:        The given value which is being tested.
+    :param expected:    The expected value which is being tested against.
+
+.. c:function:: void kite_Quiz_isGreaterThanChar(char* name, char real, char expected)
+
+    Test that a given `char` is greater-than an expected `char` value.
+
+    :param name:        The name of the test.
+    :param real:        The given value which is being tested.
+    :param expected:    The expected value which is being tested against.
+
+.. c:function:: void kite_Quiz_isGreaterThanString(char* name, char* real, char* expected)
+
+    Test that a given String is greater-than an expected String value. A given 
+    test string is considered greater-than a control string if its first non-
+    matching character's ASCII code is greater-than the control's at the same 
+    position.
+
+    :param name:        The name of the test.
+    :param real:        The given value which is being tested.
+    :param expected:    The expected value which is being tested against.
+
+Greater-than-or-equal-to Tests
+------------------------------
+
+These tests are used for validating that a given test value is greater-than-or-
+equal-to an expected control value.
+
+.. c:function:: void kite_Quiz_isGreaterThanOrEqualToInt(char* name, int real, int expected)
+
+    Test that a given `int` is greater-than-or-equal-to an expected `int` value.
+
+    :param name:        The name of the test.
+    :param real:        The given value which is being tested.
+    :param expected:    The expected value which is being tested against.
+
+.. c:function:: void kite_Quiz_isGreaterThanOrEqualToFloat(char* name, float real, float expected)
+
+    Test that a given `float` is greater-than-or-equal-to an expected `float` 
+    value.
+
+    :param name:        The name of the test.
+    :param real:        The given value which is being tested.
+    :param expected:    The expected value which is being tested against.
+
+.. c:function:: void kite_Quiz_isGreaterThanOrEqualToChar(char* name, char real, char expected)
+
+    Test that a given `char` is greater-than-or-equal-to an expected `char` value.
+
+    :param name:        The name of the test.
+    :param real:        The given value which is being tested.
+    :param expected:    The expected value which is being tested against.
+
+.. c:function:: void kite_Quiz_isGreaterThanOrEqualToString(char* name, char* real, char* expected)
+
+    Test that a given String is greater-than-or-equal-to an expected String value. 
+    A given test string is considered greater-than-or-equal-to a control string if 
+    its first non-matching character's ASCII code is greater-than-or-equal-to the control's at 
+    the same position.
+
+    :param name:        The name of the test.
+    :param real:        The given value which is being tested.
+    :param expected:    The expected value which is being tested against.
+
+Boolean Tests
+-------------
+
+These tests are used for validating boolean values.
+
+.. c:function:: void kite_Quiz_isTrue(char* name, int value)
+
+    Test that a given `int` value is true. An `int` value is considered true if
+    it is non-zero.
+
+    :param name:        The name of the test.
+    :param value:       The given value which is being tested.
+
+.. c:function:: void kite_Quiz_isFalse(char* name, int value)
+
+    Test that a given `int` value is false. An `int` value is considered false 
+    if it is exactly zero.
+
+    :param name:        The name of the test.
+    :param value:       The given value which is being tested.

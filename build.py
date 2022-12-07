@@ -35,6 +35,7 @@ INCLUDE_PATHS = [
 ]
 
 TESTS = {
+    "test_ErrorState": "test/test_ErrorState.c",
     "test_Quiz": "test/test_Quiz.c"
 }
 

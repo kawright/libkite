@@ -3,7 +3,7 @@
 
 int main() {
 
-    kite_Quiz_init("kite_Quiz Test Suite");
+    kite_Quiz_init("kite_Quiz Test Suite (SHOULD FAIL 50\% CASE RATE)!");
 
     kite_Quiz_isThrown("Test isThrown pass", kite_ErrorCode_OK);
     
