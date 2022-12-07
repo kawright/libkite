@@ -1,9 +1,10 @@
 /**
- * @file        libkite.h
+ * @file        kite_quiz.h
  * @author      Kristoffer A. Wright (kris.al.wright@gmail.com)
- * @brief       This file defines the API of the entire Kite framework.
- * @since       v0.1.0
- * @date        2022-11-30
+ * @brief       This file defines an API for unit testing using small test
+ *              components called quizzes.
+ * @since       v0.2.0
+ * @date        2022-12-01
  * @copyright   Copyright (c) 2022 Kristoffer A. Wright
  * 
  */
@@ -14,5 +15,4 @@ Precompiler directives
 ================================================================================
 */
 
-#include "kite_error.h"
-#include "kite_quiz.h"
+#include "kite_Quiz.h"

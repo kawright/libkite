@@ -56,6 +56,13 @@ build
 
 # Python
 __pycache__
+venv
 
 # Documentation
-docs
+docs/build
+
+# .vscode
+.vscode
+
+# Testing
+test_results.txt
