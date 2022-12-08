@@ -1,11 +1,10 @@
 /*
 ================================================================================
-FILE:       kite_ErrorCode.h
-PURPOSE:    The file contains the definition of the kite_ErrorCode enum, which
-            contains all error codes that can be thrown.
+FILE:       kite_Char.c
+PURPOSE:    The file implements the API described by kite_Char.h
 AUTHOR:     Kristoffer A. Wright
-SINCE:      v0.1.0
-DATE:       2022-11-30
+SINCE:      v0.3.0
+DATE:       2022-12-07
 COPYRIGHT:  Copyright (c) 2022 Kristoffer A. Wright
 ================================================================================
 */
@@ -16,24 +15,33 @@ Precompiler directives
 ================================================================================
 */
 
-#pragma once
+#include "kite_Char.h"
+
+#define TRUE 1
+#define FALSE 0
 
 /*
 ================================================================================
-Enums
+Range check functions
 ================================================================================
 */
 
-// Stores all error codes which may be thrown.
-typedef enum __ErrorCode {
+int kite_Char_isLower(char value) {
+    if ((value >= 97) && (value <= 122)) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
 
-    // No error has occurred.
-    kite_ErrorCode_OK,
+int kite_Char_isUpper(char value) {
+    if ((value >= 65) && (value <= 90)) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
 
-    // A general error has occurred.
-    kite_ErrorCode_GENERAL,
-
-    // An attempt to allocate heap memory failed.
-    kite_ErrorCode_MEMORY_ALLOCATION
-
-} kite_ErrorCode;
+int kite_Char_isAlpha(char value) {
+    return (kite_Char_isLower(value) || kite_Char_isUpper(value));
+}
