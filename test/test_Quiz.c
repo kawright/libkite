@@ -140,6 +140,6 @@ int main() {
 
     kite_Quiz_isFalse("Test isFalse false", 1);
 
-    return kite_Quiz_finish();
+    return kite_Quiz_finishWithPass();
 
 }
