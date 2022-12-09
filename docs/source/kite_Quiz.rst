@@ -32,11 +32,16 @@ These functions are used to initialize and conclude a single test suite run.
 
 .. c:function:: int kite_Quiz_finish()
 
-    Complete a test suite run.
+    Complete a test suite run and print the results to `STDOUT`.
 
     If *any* individual tests fail, this function will return `1`, otherwise `0`
     will be returned. The reason for this so that the return value may be used
     as the exit code for the entire test suite process.
+
+.. c:function:: int kite_Quiz_finishWithPass()
+
+    Complete a test suite run with an unconditional pass, and print the results
+    to `STDOUT`.
 
 Error State Tests
 -----------------

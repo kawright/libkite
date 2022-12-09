@@ -42,6 +42,11 @@ void kite_Quiz_init(
  */
 int kite_Quiz_finish();
 
+// Complete a test suite with an unconditional pass.
+//
+// This will print the results of the suite to STDOUT.
+int kite_Quiz_finishWithPass();
+
 /*
 ================================================================================
 Error tests
