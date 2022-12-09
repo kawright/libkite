@@ -6,7 +6,7 @@ import subprocess
 import sys
 import tarfile
 
-VERSION_NUMBER = "v0.2.0"
+VERSION_NUMBER = "v0.2.1"
 
 SOURCE_OBJECTS = {
     "kite_ErrorState.o": "src/error/source/kite_ErrorState.c",
