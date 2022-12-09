@@ -6,7 +6,7 @@ import subprocess
 import sys
 import tarfile
 
-VERSION_NUMBER = "v0.2.0"
+VERSION_NUMBER = "v0.2.1"
 
 SOURCE_OBJECTS = {
     "kite_Char.o": "src/char/source/kite_Char.c",

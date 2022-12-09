@@ -67,6 +67,21 @@ int kite_Quiz_finish() {
     }
 }
 
+int kite_Quiz_finishWithPass() {
+
+    printf("---------------------------------------------------------------\n");
+    printf("TEST SUITE RESULTS:\n");
+    printf("TESTS RUN:    %d\n", __testsRun__);
+    printf("TESTS PASSED: %d\n", __testsPassed__);
+    printf("TESTS FAILED: %d\n", __testsFailed__);
+    printf("===============================================================\n");
+    printf("<<%s>> COMPLETE\n", __suiteName__);
+    printf("===============================================================\n"
+        "\n");
+
+    return 0;
+}
+
 /*
 ================================================================================
 Error tests
