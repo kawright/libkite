@@ -56,10 +56,10 @@ Conversion functions
 // Convert a char value to its uppercase equivalent.
 //
 // Non-lowercase characters will be returned unchanged.
-int kite_Char_toUpper(char value);
+char kite_Char_toUpper(char value);
 
 
 // Convert a char value to its lowercase equivalent.
 //
 // Non-capital characters will be returned unchanged.
-int kite_Char_toLower(char value);
+char kite_Char_toLower(char value);

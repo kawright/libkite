@@ -94,5 +94,21 @@ int main() {
 
     kite_Quiz_isFalse("Test isPrintable with tab", kite_Char_isPrintable('\t'));
 
+    kite_Quiz_isEqualChar("Test toLower with F", kite_Char_toLower('F'), 'f');
+
+    kite_Quiz_isEqualChar("Test toLower with Z", kite_Char_toLower('Z'), 'z');
+
+    kite_Quiz_isEqualChar("Test toLower with d", kite_Char_toLower('d'), 'd');
+
+    kite_Quiz_isEqualChar("Test toLower with 9", kite_Char_toLower('9'), '9');
+
+    kite_Quiz_isEqualChar("Test toUpper with F", kite_Char_toUpper('F'), 'F');
+
+    kite_Quiz_isEqualChar("Test toUpper with Z", kite_Char_toUpper('Z'), 'Z');
+
+    kite_Quiz_isEqualChar("Test toUpper with d", kite_Char_toUpper('d'), 'D');
+
+    kite_Quiz_isEqualChar("Test toUpper with 9", kite_Char_toUpper('9'), '9');
+
     return kite_Quiz_finish();
 }

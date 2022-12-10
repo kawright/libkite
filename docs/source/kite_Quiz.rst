@@ -34,9 +34,12 @@ These functions are used to initialize and conclude a single test suite run.
 
     Complete a test suite run and print the results to `STDOUT`.
 
-    If *any* individual tests fail, this function will return `1`, otherwise `0`
-    will be returned. The reason for this so that the return value may be used
-    as the exit code for the entire test suite process.
+    :returns:   Returns a value that indicates the success or failure of this
+                test suite run. A value of `0` indicates that all tests passed.
+                A value of `1` indicates at least one test failed. This value
+                can conveniently be used as the exit code for an entire test
+                suite executable so that a test harness can run the suite and
+                report the result of it to the user.
 
 .. c:function:: int kite_Quiz_finishWithPass()
 
@@ -44,6 +47,9 @@ These functions are used to initialize and conclude a single test suite run.
     to `STDOUT`.
 
     .. versionadded:: v0.2.1
+
+    :returns:   Returns `0` unconditionally, regardless of whether or not any
+                tests failed.
 
 Error State Tests
 -----------------

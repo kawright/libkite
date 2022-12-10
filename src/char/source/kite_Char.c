@@ -91,3 +91,19 @@ int kite_Char_isPrintable(char value) {
         return FALSE;
     }
 }
+
+char kite_Char_toUpper(char value) {
+    if (kite_Char_isLower(value)) {
+        return value - ('a' - 'A');
+    } else {
+        return value;
+    }
+}
+
+char kite_Char_toLower(char value) {
+    if (kite_Char_isUpper(value)) {
+        return value + ('a' - 'A');
+    } else {
+        return value;
+    }
+}
