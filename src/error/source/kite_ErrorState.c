@@ -77,3 +77,7 @@ void kite_ErrorState_fatal() {
             exit(1);
     }
 }
+
+void kite_ErrorState_handle(void (handler(kite_ErrorCode code))) {
+    (*handler)(kite_ErrorState_getCode());
+}

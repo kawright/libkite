@@ -48,3 +48,13 @@ void kite_ErrorState_print();
 // Immediately terminate the process with the exit code that corresponds to the
 // most recently thrown error code.
 void kite_ErrorState_fatal();
+
+
+// If an error condition currently exists (i.e. the current most recently thrown
+// code is not kite_ErrorCode_OK), call an error handler callback function to 
+// process the error.
+//
+// The passed in pointer should point to a callback function which returns void 
+// and which accepts a single argument, which is of type kite_ErrorCode, and is 
+// the most recently thrown error.
+void kite_ErrorState_handle(void (handler(kite_ErrorCode code)));
