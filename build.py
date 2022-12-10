@@ -6,9 +6,10 @@ import subprocess
 import sys
 import tarfile
 
-VERSION_NUMBER = "v0.2.1"
+VERSION_NUMBER = "v0.3.0"
 
 SOURCE_OBJECTS = {
+    "kite_Char.o": "src/char/source/kite_Char.c",
     "kite_ErrorState.o": "src/error/source/kite_ErrorState.c",
     "kite_Quiz.o": "src/quiz/source/kite_Quiz.c"
 }
@@ -16,9 +17,11 @@ SOURCE_OBJECTS = {
 INCLUDE_FILES = {
     "libkite.h": "src/libkite.h",
 
+    "kite_char.h": "src/char/kite_char.h",
     "kite_error.h": "src/error/kite_error.h",
     "kite_quiz.h": "src/quiz/kite_quiz.h",
 
+    "kite_Char.h": "src/char/include/kite_Char.h",
     "kite_ErrorCode.h": "src/error/include/kite_ErrorCode.h",
     "kite_ErrorState.h": "src/error/include/kite_ErrorState.h",
     "kite_Quiz.h": "src/quiz/include/kite_Quiz.h"
@@ -27,14 +30,17 @@ INCLUDE_FILES = {
 INCLUDE_PATHS = [
     "src",
 
+    "src/char",
     "src/error",
     "src/quiz",
 
+    "src/char/include",
     "src/error/include",
     "src/quiz/include"
 ]
 
 TESTS = {
+    "test_Char": "test/test_Char.c",
     "test_ErrorState": "test/test_ErrorState.c",
     "test_Quiz": "test/test_Quiz.c"
 }

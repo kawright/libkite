@@ -7,3 +7,4 @@ This header file includes the entire Kite framework API
 
     kite_error
     kite_quiz
+    kite_text
