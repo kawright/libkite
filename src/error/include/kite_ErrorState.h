@@ -57,4 +57,6 @@ void kite_ErrorState_fatal();
 // The passed in pointer should point to a callback function which returns void 
 // and which accepts a single argument, which is of type kite_ErrorCode, and is 
 // the most recently thrown error.
+//
+// Added v0.3.1
 void kite_ErrorState_handle(void (handler(kite_ErrorCode code)));

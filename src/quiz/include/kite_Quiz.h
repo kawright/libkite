@@ -41,6 +41,8 @@ int kite_Quiz_finish();
 // Complete a test suite with an unconditional pass.
 //
 // This will print the results of the suite to STDOUT.
+//
+// Added v0.2.1
 int kite_Quiz_finishWithPass();
 
 /*

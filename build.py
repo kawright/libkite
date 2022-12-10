@@ -11,7 +11,8 @@ VERSION_NUMBER = "v0.3.0"
 SOURCE_OBJECTS = {
     "kite_Char.o": "src/text/source/kite_Char.c",
     "kite_ErrorState.o": "src/error/source/kite_ErrorState.c",
-    "kite_Quiz.o": "src/quiz/source/kite_Quiz.c"
+    "kite_Quiz.o": "src/quiz/source/kite_Quiz.c",
+    "kite_String.o": "src/text/source/kite_String.c",  
 }
 
 INCLUDE_FILES = {
@@ -24,7 +25,8 @@ INCLUDE_FILES = {
     "kite_Char.h": "src/text/include/kite_Char.h",
     "kite_ErrorCode.h": "src/error/include/kite_ErrorCode.h",
     "kite_ErrorState.h": "src/error/include/kite_ErrorState.h",
-    "kite_Quiz.h": "src/quiz/include/kite_Quiz.h"
+    "kite_Quiz.h": "src/quiz/include/kite_Quiz.h",
+    "kite_String.h": "src/text/include/kite_String.h"
 }
 
 INCLUDE_PATHS = [
@@ -42,7 +44,8 @@ INCLUDE_PATHS = [
 TESTS = {
     "test_Char": "test/test_Char.c",
     "test_ErrorState": "test/test_ErrorState.c",
-    "test_Quiz": "test/test_Quiz.c"
+    "test_Quiz": "test/test_Quiz.c",
+    "test_String": "test/test_String.c"
 }
 
 def main():
