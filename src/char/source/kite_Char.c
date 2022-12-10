@@ -45,3 +45,49 @@ int kite_Char_isUpper(char value) {
 int kite_Char_isAlpha(char value) {
     return (kite_Char_isLower(value) || kite_Char_isUpper(value));
 }
+
+int kite_Char_isNumeric(char value) {
+    if((value >= 48) && (value <= 57)) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+int kite_Char_isAlphanumeric(char value) {
+    return (kite_Char_isAlpha(value) || kite_Char_isNumeric(value));
+}
+
+int kite_Char_isPunctuation(char value) {
+    if (
+            ((value >= 33) && (value <= 47))
+            || ((value >= 58) && (value <= 64))
+            || ((value >= 91) && (value <= 96))
+            || ((value >= 123) && (value <= 126))) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+int kite_Char_isWhitespace(char value) {
+    if (
+            (value == ' ')
+            || (value == '\t')
+            || (value == '\r')
+            || (value == '\n')
+            || (value == '\v')
+            || (value == '\f')) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+int kite_Char_isPrintable(char value) {
+    if((value >= 32) && (value <= 126)) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}

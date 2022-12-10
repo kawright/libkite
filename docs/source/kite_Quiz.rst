@@ -43,6 +43,8 @@ These functions are used to initialize and conclude a single test suite run.
     Complete a test suite run with an unconditional pass, and print the results
     to `STDOUT`.
 
+    .. versionadded:: v0.2.1
+
 Error State Tests
 -----------------
 
