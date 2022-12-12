@@ -14,6 +14,7 @@ Precompiler directives
 ================================================================================
 */
 
-#include "kite_text.h"
+#include "kite_collections.h"
 #include "kite_error.h"
 #include "kite_quiz.h"
+#include "kite_text.h"

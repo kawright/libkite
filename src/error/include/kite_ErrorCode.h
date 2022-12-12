@@ -34,6 +34,12 @@ typedef enum __ErrorCode {
     kite_ErrorCode_GENERAL,
 
     // An attempt to allocate heap memory failed.
-    kite_ErrorCode_MEMORY_ALLOCATION
+    kite_ErrorCode_MEMORY_ALLOCATION,
+
+    // An attempt to access an out-of-bounds array index was made.
+    kite_ErrorCode_BOUNDS,
+
+    // An argument or input data is malformed or otherwise invalid.
+    kite_ErrorCode_BAD_DATA
 
 } kite_ErrorCode;

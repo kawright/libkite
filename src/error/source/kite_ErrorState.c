@@ -59,6 +59,14 @@ void kite_ErrorState_print() {
             fprintf(stderr, "[MEMORY_ALLOCATION]: An attempt to allocate heap "
                 "memory has failed.\n");
             return;
+        case kite_ErrorCode_BOUNDS:
+            fprintf(stderr, "[BOUNDS]: An out-of-bounds array access was "
+                "attempted.\n");
+            return;
+        case kite_ErrorCode_BAD_DATA:
+            fprintf(stderr, "[BAD_DATA]: An argument or input data is "
+                "malformed or otherwise invalid.\n");
+            return;
         default:
             fprintf(stderr, "[UNKNOWN]: An unknown error has occurred.\n");
             return;
@@ -73,6 +81,10 @@ void kite_ErrorState_fatal() {
             exit(1);
         case kite_ErrorCode_MEMORY_ALLOCATION:
             exit(3);
+        case kite_ErrorCode_BOUNDS:
+            exit(4);
+        case kite_ErrorCode_BAD_DATA:
+            exit(5);
         default:
             exit(1);
     }
