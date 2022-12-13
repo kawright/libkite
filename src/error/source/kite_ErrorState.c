@@ -50,21 +50,24 @@ void kite_ErrorState_reset() {
 void kite_ErrorState_print() {
     switch (__code) {
         case kite_ErrorCode_OK:
-            fprintf(stderr, "[OK]: No error has occurred.\n");
+            fprintf(stderr, "[000-OK]: No error has occurred.\n");
             return;
         case kite_ErrorCode_GENERAL:
-            fprintf(stderr, "[GENERAL]: A general error has occurred.\n");
+            fprintf(stderr, "[001-GENERAL]: A general error has occurred.\n");
+            return;
+        case kite_ErrorCode_ARGV:
+            fprintf(stderr, "[002-ARGV]: The argument vector is malformed.\n");
             return;
         case kite_ErrorCode_MEMORY_ALLOCATION:
-            fprintf(stderr, "[MEMORY_ALLOCATION]: An attempt to allocate heap "
-                "memory has failed.\n");
+            fprintf(stderr, "[003-MEMORY_ALLOCATION]: An attempt to allocate "
+                "heap memory has failed.\n");
             return;
         case kite_ErrorCode_BOUNDS:
-            fprintf(stderr, "[BOUNDS]: An out-of-bounds array access was "
+            fprintf(stderr, "[004-BOUNDS]: An out-of-bounds array access was "
                 "attempted.\n");
             return;
         case kite_ErrorCode_BAD_DATA:
-            fprintf(stderr, "[BAD_DATA]: An argument or input data is "
+            fprintf(stderr, "[005-BAD_DATA]: An argument or input data is "
                 "malformed or otherwise invalid.\n");
             return;
         default:
@@ -74,20 +77,7 @@ void kite_ErrorState_print() {
 }
 
 void kite_ErrorState_fatal() {
-    switch (__code) {
-        case kite_ErrorCode_OK:
-            exit(0);
-        case kite_ErrorCode_GENERAL:
-            exit(1);
-        case kite_ErrorCode_MEMORY_ALLOCATION:
-            exit(3);
-        case kite_ErrorCode_BOUNDS:
-            exit(4);
-        case kite_ErrorCode_BAD_DATA:
-            exit(5);
-        default:
-            exit(1);
-    }
+    exit((int)__code);
 }
 
 void kite_ErrorState_handle(void (handler(kite_ErrorCode code))) {

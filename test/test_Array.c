@@ -45,11 +45,7 @@ int main() {
     kite_Quiz_isEqualString("Test get element at index 2", 
         (char*) kite_Array_getElement(array, 2), "Amadeus");
 
-    kite_Array_del(array, &deleter);
-
-    kite_Quiz_isOkState("Test del success");
-
-    kite_Array_sort(array, comparator, -1, -1);
+    kite_Array_sort(array, &comparator, -1, -1);
 
     kite_Quiz_isOkState("Test sort success");
 
@@ -57,10 +53,14 @@ int main() {
         (char*) kite_Array_getElement(array, 0), "Amadeus");
 
     kite_Quiz_isEqualString("Test get sorted element at index 1", 
-        (char*) kite_Array_getElement(array, 1), "Citizen Cane");
+        (char*) kite_Array_getElement(array, 1), "Citizen Kane");
 
     kite_Quiz_isEqualString("Test get sort element at index 2", 
         (char*) kite_Array_getElement(array, 2), "Psycho");
+
+    kite_Array_del(array, &deleter);
+
+    kite_Quiz_isOkState("Test del success");
 
     return kite_Quiz_finish();
 }

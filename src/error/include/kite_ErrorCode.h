@@ -28,18 +28,21 @@ Enums
 typedef enum __ErrorCode {
 
     // No error has occurred.
-    kite_ErrorCode_OK,
+    kite_ErrorCode_OK = 0,
 
     // A general error has occurred.
-    kite_ErrorCode_GENERAL,
+    kite_ErrorCode_GENERAL = 1,
+
+    // The argument vector is malformed.
+    kite_ErrorCode_ARGV = 2,
 
     // An attempt to allocate heap memory failed.
-    kite_ErrorCode_MEMORY_ALLOCATION,
+    kite_ErrorCode_MEMORY_ALLOCATION = 3,
 
     // An attempt to access an out-of-bounds array index was made.
-    kite_ErrorCode_BOUNDS,
+    kite_ErrorCode_BOUNDS = 4,
 
     // An argument or input data is malformed or otherwise invalid.
-    kite_ErrorCode_BAD_DATA
+    kite_ErrorCode_BAD_DATA = 5
 
 } kite_ErrorCode;

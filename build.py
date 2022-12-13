@@ -127,7 +127,8 @@ def main():
     print("Building test binaries...", end="")
     for outfile, infile in TESTS.items():
         arg_list = [
-            "gcc", 
+            "gcc",
+            "-g",
             "-c", 
             infile, 
             "-o", 
@@ -138,6 +139,7 @@ def main():
         subprocess.call(arg_list)
         arg_list = [
             "gcc",
+            "-g",
             "-o",
             "build/bin/test/{}".format(outfile),
             "build/object/test/{}.o".format(outfile),

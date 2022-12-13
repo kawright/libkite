@@ -14,7 +14,7 @@ int __partition(kite_Array array, int (comparator(void* left, void* right)),
     void* pivot = array->contents[end];
     int partIndex = start - 1;
     for (int i = start; i <= end; i++) {
-        if (comparator(array->contents[i], pivot) < 0) {
+        if ((*comparator)(array->contents[i], pivot) < 0) {
             partIndex++;
             void* temp = array->contents[partIndex];
             array->contents[partIndex] = array->contents[i];
@@ -43,7 +43,7 @@ void kite_Array_del(kite_Array self, void (deleter(void* element))) {
 
     // Use the given deleter function to free each element:
     for (int i = 0; i < self->length; i++) {
-        deleter(self->contents[i]);
+        (*deleter)(self->contents[i]);
     }
     free(self);
     return;
@@ -82,16 +82,22 @@ void kite_Array_sort(kite_Array self, int (comparator(void* left, void* right)),
         int start, int end) {
 
     // Apply defaults:
+    int realStart;
     if (start < 0) {
-        start = 0;
+        realStart = 0;
+    } else {
+        realStart = start;
     }
+    int realEnd;
     if (end < 0) {
-        end = self->length - 1;
+        realEnd = self->length - 1;
+    } else {
+        realEnd = end;
     }
-    if (start >= end) {
+    if (realStart >= realEnd) {
         return;
     }
-    int partIndex = __partition(self, comparator, start, end);
-    kite_Array_sort(self, comparator, start, partIndex-1);
-    kite_Array_sort(self, comparator, partIndex+1, end);
+    int partIndex = __partition(self, comparator, realStart, realEnd);
+    kite_Array_sort(self, comparator, realStart, partIndex-1);
+    kite_Array_sort(self, comparator, partIndex+1, realEnd);
 }

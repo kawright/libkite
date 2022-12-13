@@ -98,7 +98,8 @@ void kite_Quiz_isThrown(
         printf("<<%s>> OK\n", name);
     } else {
         __testsFailed__++;
-        printf("<<%s>> FAILED\n", name);
+        printf("<<%s>> FAILED--Expected `%d`, but got `%d`.\n", name, code, 
+            kite_ErrorState_getCode());
     }
 }
 
@@ -145,7 +146,8 @@ void kite_Quiz_isEqualInt(
         printf("<<%s>> OK\n", name);
     } else {
         __testsFailed__++;
-        printf("<<%s>> FAILED\n", name);
+        printf("<<%s>> FAILED--Expected `%d`, but got `%d`.\n", name, expected, 
+            real);
     }
 }
 
@@ -160,7 +162,8 @@ void kite_Quiz_isEqualFloat(
         printf("<<%s>> OK\n", name);
     } else {
         __testsFailed__++;
-        printf("<<%s>> FAILED\n", name);
+        printf("<<%s>> FAILED--Expected `%f`, but got `%f`.\n", name, expected,
+            real);
     }
 }
 
@@ -175,7 +178,8 @@ void kite_Quiz_isEqualChar(
         printf("<<%s>> OK\n", name);
     } else {
         __testsFailed__++;
-        printf("<<%s>> FAILED\n", name);
+        printf("<<%s>> FAILED--Expected `%c`, but got `%c`.\n", name, expected,
+            real);
     }
 }
 
@@ -190,7 +194,8 @@ void kite_Quiz_isEqualString(
         printf("<<%s>> OK\n", name);
     } else {
         __testsFailed__++;
-        printf("<<%s>> FAILED\n", name);
+        printf("<<%s>> FAILED--Expected `%s`, but got `%s`.\n", name, expected,
+            real);
     }
 }
 
@@ -211,7 +216,8 @@ void kite_Quiz_isNotEqualInt(
         printf("<<%s>> OK\n", name);
     } else {
         __testsFailed__++;
-        printf("<<%s>> FAILED\n", name);
+        printf("<<%s>> FAILED--Expected `%d`, but got `%d`.\n", name, expected, 
+            real);
     }
 }
 
@@ -226,7 +232,8 @@ void kite_Quiz_isNotEqualFloat(
         printf("<<%s>> OK\n", name);
     } else {
         __testsFailed__++;
-        printf("<<%s>> FAILED\n", name);
+        printf("<<%s>> FAILED--Expected `%f`, but got `%f`.\n", name, expected, 
+            real);
     }
 }
 
@@ -241,7 +248,8 @@ void kite_Quiz_isNotEqualChar(
         printf("<<%s>> OK\n", name);
     } else {
         __testsFailed__++;
-        printf("<<%s>> FAILED\n", name);
+        printf("<<%s>> FAILED--Expected `%c`, but got `%c`.\n", name, expected, 
+            real);
     }
 }
 
@@ -256,7 +264,8 @@ void kite_Quiz_isNotEqualString(
         printf("<<%s>> OK\n", name);
     } else {
         __testsFailed__++;
-        printf("<<%s>> FAILED\n", name);
+        printf("<<%s>> FAILED--Expected `%s`, but got `%s`.\n", name, expected, 
+            real);
     }
 }
 
@@ -277,7 +286,8 @@ void kite_Quiz_isLessThanInt(
         printf("<<%s>> OK\n", name);
     } else {
         __testsFailed__++;
-        printf("<<%s>> FAILED\n", name);
+        printf("<<%s>> FAILED--Expected `%d`, but got `%d`.\n", name, expected, 
+            real);
     }
 }
 
@@ -292,7 +302,8 @@ void kite_Quiz_isLessThanFloat(
         printf("<<%s>> OK\n", name);
     } else {
         __testsFailed__++;
-        printf("<<%s>> FAILED\n", name);
+        printf("<<%s>> FAILED--Expected `%f`, but got `%f`.\n", name, expected, 
+            real);
     }
 }
 
@@ -307,7 +318,8 @@ void kite_Quiz_isLessThanChar(
         printf("<<%s>> OK\n", name);
     } else {
         __testsFailed__++;
-        printf("<<%s>> FAILED\n", name);
+        printf("<<%s>> FAILED--Expected `%c`, but got `%c`.\n", name, expected, 
+            real);
     }
 }
 
@@ -322,7 +334,8 @@ void kite_Quiz_isLessThanString(
         printf("<<%s>> OK\n", name);
     } else {
         __testsFailed__++;
-        printf("<<%s>> FAILED\n", name);
+        printf("<<%s>> FAILED--Expected `%s`, but got `%s`.\n", name, expected, 
+            real);
     }
 }
 
@@ -343,7 +356,8 @@ void kite_Quiz_isLessThanOrEqualToInt(
         printf("<<%s>> OK\n", name);
     } else {
         __testsFailed__++;
-        printf("<<%s>> FAILED\n", name);
+        printf("<<%s>> FAILED--Expected `%d`, but got `%d`.\n", name, expected, 
+            real);
     }
 }
 
@@ -358,7 +372,8 @@ void kite_Quiz_isLessThanOrEqualToFloat(
         printf("<<%s>> OK\n", name);
     } else {
         __testsFailed__++;
-        printf("<<%s>> FAILED\n", name);
+        printf("<<%s>> FAILED--Expected `%f`, but got `%f`.\n", name, expected, 
+            real);
     }
 }
 
@@ -373,7 +388,8 @@ void kite_Quiz_isLessThanOrEqualToChar(
         printf("<<%s>> OK\n", name);
     } else {
         __testsFailed__++;
-        printf("<<%s>> FAILED\n", name);
+        printf("<<%s>> FAILED--Expected `%c`, but got `%c`.\n", name, expected, 
+            real);
     }
 }
 
@@ -388,7 +404,8 @@ void kite_Quiz_isLessThanOrEqualToString(
         printf("<<%s>> OK\n", name);
     } else {
         __testsFailed__++;
-        printf("<<%s>> FAILED\n", name);
+        printf("<<%s>> FAILED--Expected `%s`, but got `%s`.\n", name, expected, 
+            real);
     }
 }
 
@@ -409,7 +426,8 @@ void kite_Quiz_isGreaterThanInt(
         printf("<<%s>> OK\n", name);
     } else {
         __testsFailed__++;
-        printf("<<%s>> FAILED\n", name);
+        printf("<<%s>> FAILED--Expected `%d`, but got `%d`.\n", name, expected, 
+            real);
     }
 }
 
@@ -424,7 +442,8 @@ void kite_Quiz_isGreaterThanFloat(
         printf("<<%s>> OK\n", name);
     } else {
         __testsFailed__++;
-        printf("<<%s>> FAILED\n", name);
+        printf("<<%s>> FAILED--Expected `%f`, but got `%f`.\n", name, expected, 
+            real);
     }
 }
 
@@ -439,7 +458,8 @@ void kite_Quiz_isGreaterThanChar(
         printf("<<%s>> OK\n", name);
     } else {
         __testsFailed__++;
-        printf("<<%s>> FAILED\n", name);
+        printf("<<%s>> FAILED--Expected `%c`, but got `%c`.\n", name, expected, 
+            real);
     }
 }
 
@@ -454,7 +474,8 @@ void kite_Quiz_isGreaterThanString(
         printf("<<%s>> OK\n", name);
     } else {
         __testsFailed__++;
-        printf("<<%s>> FAILED\n", name);
+        printf("<<%s>> FAILED--Expected `%s`, but got `%s`.\n", name, expected, 
+            real);
     }
 }
 
@@ -476,7 +497,8 @@ void kite_Quiz_isGreaterThanOrEqualToInt(
         printf("<<%s>> OK\n", name);
     } else {
         __testsFailed__++;
-        printf("<<%s>> FAILED\n", name);
+        printf("<<%s>> FAILED--Expected `%d`, but got `%d`.\n", name, expected, 
+            real);
     }
 }
 
@@ -491,7 +513,8 @@ void kite_Quiz_isGreaterThanOrEqualToFloat(
         printf("<<%s>> OK\n", name);
     } else {
         __testsFailed__++;
-        printf("<<%s>> FAILED\n", name);
+        printf("<<%s>> FAILED--Expected `%f`, but got `%f`.\n", name, expected, 
+            real);
     }
 }
 
@@ -506,7 +529,8 @@ void kite_Quiz_isGreaterThanOrEqualToChar(
         printf("<<%s>> OK\n", name);
     } else {
         __testsFailed__++;
-        printf("<<%s>> FAILED\n", name);
+        printf("<<%s>> FAILED--Expected `%c`, but got `%c`.\n", name, expected, 
+            real);
     }
 }
 
@@ -521,7 +545,8 @@ void kite_Quiz_isGreaterThanOrEqualToString(
         printf("<<%s>> OK\n", name);
     } else {
         __testsFailed__++;
-        printf("<<%s>> FAILED\n", name);
+        printf("<<%s>> FAILED--Expected `%s`, but got `%s`.\n", name, expected, 
+            real);
     }
 }
 
