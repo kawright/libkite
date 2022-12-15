@@ -70,6 +70,9 @@ void kite_ErrorState_print() {
             fprintf(stderr, "[005-BAD_DATA]: An argument or input data is "
                 "malformed or otherwise invalid.\n");
             return;
+        case kite_ErrorCode_EMPTY_COLLECTION:
+            fprintf(stderr, "[006-EMPTY_COLLECTION]: An illegal operation was "
+                "attempted on an empty collection.\n");
         default:
             fprintf(stderr, "[UNKNOWN]: An unknown error has occurred.\n");
             return;

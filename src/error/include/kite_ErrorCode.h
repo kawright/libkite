@@ -43,6 +43,9 @@ typedef enum __ErrorCode {
     kite_ErrorCode_BOUNDS = 4,
 
     // An argument or input data is malformed or otherwise invalid.
-    kite_ErrorCode_BAD_DATA = 5
+    kite_ErrorCode_BAD_DATA = 5,
+
+    // Illegal operation attempted on an empty collection.
+    kite_ErrorCode_EMPTY_COLLECTION = 6
 
 } kite_ErrorCode;
