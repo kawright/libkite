@@ -42,6 +42,30 @@ int main () {
 
     free(clone04);
 
+    char* clone05 = kite_String_center("Hello", 11, '*');
+
+    kite_Quiz_isOkState("Test center throws no errors 01");
+
+    kite_Quiz_isEqualString("Test success center 01", clone05, "***Hello***");
+
+    free(clone05);
+
+    char* clone06 = kite_String_center("Hello", 10, '*');
+
+    kite_Quiz_isOkState("Test center throws no errors 02");
+
+    kite_Quiz_isEqualString("Test success center 02", clone06, "**Hello***");
+
+    free(clone06);
+
+    char* clone07 = kite_String_center("Hello", -3, '*');
+
+    kite_Quiz_isOkState("Test center throws no errors 03");
+
+    kite_Quiz_isEqualString("Test success center 03", clone07, "Hello");
+
+    free(clone07);
+
     return kite_Quiz_finish();
 
 }

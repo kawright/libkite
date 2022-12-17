@@ -19,3 +19,5 @@ COPYRIGHT:  Copyright (c) 2022 Kristoffer A. Wright
 char* kite_String_clone(char* value);
 
 char* kite_String_capitalize(char* value);
+
+char* kite_String_center(char* value, int width, char fill);
