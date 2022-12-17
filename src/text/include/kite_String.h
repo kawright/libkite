@@ -21,3 +21,5 @@ char* kite_String_clone(char* value);
 char* kite_String_capitalize(char* value);
 
 char* kite_String_center(char* value, int width, char fill);
+
+int kite_String_count(char* value, char* substring, int start, int end);

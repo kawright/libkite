@@ -66,6 +66,14 @@ int main () {
 
     free(clone07);
 
+    kite_Quiz_isEqualInt("Test count 01", 
+        kite_String_count("I like red shoes, red shirts, and red hats.", 
+        "red", -1, -1), 3);
+
+    kite_Quiz_isEqualInt("Test count 02", 
+        kite_String_count("BoBoBoB", 
+        "BoB", -1, -1), 2);
+
     return kite_Quiz_finish();
 
 }

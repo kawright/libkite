@@ -66,6 +66,10 @@ char* kite_String_center(char* value, int width, char fill) {
             kite_ErrorState_setCode(kite_ErrorCode_MEMORY_ALLOCATION);
             return NULL;
         }
+
+        // Calculate the length of the padding. Since we will use int division,
+        // and int division trucates towards zero, the left will always be
+        // shorter if the total padding character count is odd:
         int leftLen = (width - strlen(value)) / 2;
         int rightLen = width - strlen(value) - leftLen;
         for (int i = 0; i < leftLen; i++) {
@@ -79,4 +83,66 @@ char* kite_String_center(char* value, int width, char fill) {
         }
         return ret;
     }
+}
+
+int kite_String_count(char* value, char* substring, int start, int end) {
+    
+    // Apply defaults:
+    if (start < 0) {
+        start = 0;
+    }
+    if (end < 0) {
+        end = strlen(value);
+    }
+
+    // Reject if substring is empty:
+    if (strlen(substring) == 0) {
+        kite_ErrorState_setCode(kite_ErrorCode_BAD_DATA);
+        return 0;
+    }
+
+    // Reject if end is less than or equal to start:
+    if (end <= start) {
+        kite_ErrorState_setCode(kite_ErrorCode_BAD_DATA);
+        return 0;
+    }
+
+    // Reject if start or end is out-of-bounds:
+    if (start >= strlen(value)) {
+        kite_ErrorState_setCode(kite_ErrorCode_BOUNDS);
+        return 0;
+    }
+
+    if (end > strlen(value)) {
+        kite_ErrorState_setCode(kite_ErrorCode_BOUNDS);
+        return 0;
+    }    
+
+    // If the search length is smaller than the substring length, the substring
+    // can't possibly fit in once. We can assume zero instances:
+    if ((end - start) < strlen(substring)) {
+        return 0;
+    }
+
+    // For each character in the search spacce, see if that character is the
+    // start of a sub string:
+    int ret = 0;
+    for (int i = start; i <= (end - strlen(substring)); i++) {
+        int matched = 1;
+        for (int j = 0; j < strlen(substring); j++) {
+            if (substring[j] != value[i+j]) {
+                matched = 0;
+                break;
+            }
+        }
+        if (matched) {
+            ret++;
+
+            // Since we want non-overlapping matches, advance the position
+            // in the loop to the end of the match so that the next iteration
+            // begins on the first non-matched characted:
+            i += (strlen(substring) - 1);
+        }
+    }
+    return ret;
 }
