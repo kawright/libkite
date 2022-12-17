@@ -285,3 +285,7 @@ void kite_Quiz_isTrue(
 void kite_Quiz_isFalse(
     char *name,
     int value);
+
+void kite_Quiz_isNullPointer(
+    char *name,
+    void* value);

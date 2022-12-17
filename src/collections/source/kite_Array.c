@@ -44,19 +44,25 @@ kite_Array kite_Array_new(int size) {
     if (size < 0) {
         size = 0;
     }
-    kite_Array ret;
 
     if (size == 0) {
-        ret = malloc(sizeof ret);
+        kite_Array ret = malloc(sizeof(struct __kite_Array));
         if (ret == NULL) {
             kite_ErrorState_setCode(kite_ErrorCode_MEMORY_ALLOCATION);
             return NULL;
         }
         ret->contents = NULL;
         ret->length = 0;
+        return ret;
     } else {
-        ret = malloc((sizeof ret) * size);
+        kite_Array ret = malloc(sizeof(struct __kite_Array));
         if (ret == NULL) {
+            kite_ErrorState_setCode(kite_ErrorCode_MEMORY_ALLOCATION);
+            return NULL;
+        }
+        ret->contents = malloc((sizeof (void*)) * size);
+        if (ret->contents == NULL) {
+            free(ret);
             kite_ErrorState_setCode(kite_ErrorCode_MEMORY_ALLOCATION);
             return NULL;
         }
@@ -64,8 +70,8 @@ kite_Array kite_Array_new(int size) {
             ret->contents[i] = NULL;
         }
         ret->length = size;
+        return ret;
     }
-    return ret;
 }
 
 void kite_Array_del(kite_Array self, void (deleter(void* element))) {
@@ -74,7 +80,20 @@ void kite_Array_del(kite_Array self, void (deleter(void* element))) {
     for (int i = 0; i < self->length; i++) {
         (*deleter)(self->contents[i]);
     }
+    free(self->contents);
     free(self);
+    return;
+}
+
+void kite_Array_clear(kite_Array self, void (deleter(void* element))) {
+
+    // Use the given deleter function to free each element:
+    for (int i = 0; i < self->length; i++) {
+        (*deleter)(self->contents[i]);
+    }
+    free(self->contents);
+    self->contents = NULL;
+    self->length = 0;
     return;
 }
 
@@ -85,7 +104,7 @@ void kite_Array_append(kite_Array self, void* element) {
         self->contents = malloc(sizeof (void*));
     } else {
         void** temp = realloc(self->contents, 
-            (sizeof (void*)) * self->length+1);
+            (sizeof (void*)) * (self->length+1));
         if (temp == NULL) {
             kite_ErrorState_setCode(kite_ErrorCode_MEMORY_ALLOCATION);
             return;
@@ -165,6 +184,12 @@ void kite_Array_sort(kite_Array self, int (comparator(void* left, void* right)),
 
 void kite_Array_insert(kite_Array self, int position, void* element) {
 
+    // Inserting at the last position is equivalent to appending:
+    if (position == self->length) {
+        kite_Array_append(self, element);
+        return;
+    }
+
     // Check bounds:
     if (!__checkBounds(self, position)) {
         kite_ErrorState_setCode(kite_ErrorCode_BOUNDS);
@@ -176,7 +201,7 @@ void kite_Array_insert(kite_Array self, int position, void* element) {
         self->contents = malloc(sizeof (void*));
     } else {
         void** temp = realloc(self->contents, 
-            (sizeof (void*)) * self->length+1);
+            (sizeof (void*)) * (self->length+1));
         if (temp == NULL) {
             kite_ErrorState_setCode(kite_ErrorCode_MEMORY_ALLOCATION);
             return;
@@ -208,7 +233,7 @@ void kite_Array_remove(kite_Array self, int position,
     }
 
     // Delete the element:
-    deleter(self->contents[position]);
+    (*deleter)(self->contents[position]);
 
     // Shift elements left:
     for (int i = position + 1; i < self->length; i++) {
@@ -243,4 +268,34 @@ void kite_Array_reverse(kite_Array self) {
         j--;
     }
     return;
+}
+
+void kite_Array_extend(kite_Array self, kite_Array extension) {
+    
+    // Check if `extension` is empty. If it is, we can just return right away:
+    if (kite_Array_getLength(extension) == 0) {
+        return;
+    }
+
+    // Resize:
+    void** temp = realloc(
+        self->contents, 
+        ((sizeof (void*)) * self->length) + 
+        ((sizeof (void*)) * kite_Array_getLength(extension)));
+    if (temp == NULL) {
+        kite_ErrorState_setCode(kite_ErrorCode_MEMORY_ALLOCATION);
+        return;
+    }
+
+    self->contents = temp;
+
+    // Copy the contents to the newly allocated space:
+    for (int i = 0; i < kite_Array_getLength(extension); i++) {
+        self->contents[self->length + i] = kite_Array_getElement(extension, i);
+    }
+
+    self->length += kite_Array_getLength(extension);
+
+    return;
+
 }

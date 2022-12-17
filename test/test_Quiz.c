@@ -3,6 +3,8 @@
 
 int main() {
 
+    int testValue = 0;
+
     kite_Quiz_init("kite_Quiz Test Suite (SHOULD FAIL 50\% CASE RATE)!");
 
     kite_Quiz_isThrown("Test isThrown pass", kite_ErrorCode_OK);
@@ -139,6 +141,10 @@ int main() {
     kite_Quiz_isFalse("Test isFalse pass", 0);
 
     kite_Quiz_isFalse("Test isFalse false", 1);
+
+    kite_Quiz_isNullPointer("Test isNullPointer pass", NULL);
+
+    kite_Quiz_isNullPointer("Test isNulPointer fail", &testValue);
 
     return kite_Quiz_finishWithPass();
 

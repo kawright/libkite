@@ -83,7 +83,8 @@ def main():
     for outfile, infile in SOURCE_OBJECTS.items():
         static_object_files.append("build/object/static/{}".format(outfile))
         args = [
-            "gcc", 
+            "gcc",
+            "-g", 
             "-c", 
             infile,
             "-o", 
@@ -100,6 +101,7 @@ def main():
         shared_object_files.append("build/object/shared/{}".format(outfile))
         args = [
             "gcc", 
+            "-g",
             "-c", 
             infile,
             "-o",

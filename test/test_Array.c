@@ -115,11 +115,14 @@ int main() {
 
     kite_ErrorState_reset();
     
-    kite_Array_insert(array, 5, valueG);
+    kite_Array_insert(array, 6, valueG);
 
     kite_Quiz_isErrorState("Test error on insert past end of array");
 
     kite_ErrorState_reset();
+
+    free(valueF);
+    free(valueG);
 
     kite_Array_remove(array, 3, &deleter);
 
@@ -143,8 +146,12 @@ int main() {
 
     kite_ErrorState_reset();
 
+    char* popped = (char*) kite_Array_pop(array);
+
     kite_Quiz_isEqualString("Test pop element value",
-        (char*) kite_Array_pop(array), "Shining, The");
+        popped, "Shining, The");
+
+    free(popped);
 
     kite_Quiz_isEqualInt("Test post-pop length", kite_Array_getLength(array), 
         3);
@@ -171,7 +178,72 @@ int main() {
     kite_Quiz_isEqualString("Test get post-reverse element at index 2", 
         (char*) kite_Array_getElement(array, 2), "Amadeus");
 
+    kite_Array arrayB = kite_Array_new(3);
+
+    kite_Quiz_isOkState("Test initialize array of size 3 success");
+
+    kite_Quiz_isEqualInt("Test arrayB size", kite_Array_getLength(arrayB), 3);
+
+    kite_Array_extend(array, arrayB);
+
+    kite_Quiz_isOkState("Test extend array with arrayB success");
+
+    kite_Quiz_isEqualInt("Test post-extend array size", 
+        kite_Array_getLength(array), 6);
+
+    kite_Quiz_isNullPointer("Test post-extend element at index 3 is NULL",
+        kite_Array_getElement(array, 3));
+
+    kite_Quiz_isNullPointer("Test post-extend element at index 4 is NULL",
+        kite_Array_getElement(array, 4));
+
+    kite_Quiz_isNullPointer("Test post-extend element at index 5 is NULL",
+        kite_Array_getElement(array, 5));
+
+    kite_Array_clear(array, &deleter);
+
+    kite_Quiz_isOkState("Test clear success");
+
+    kite_Quiz_isEqualInt("Test post-clear length", kite_Array_getLength(array),
+        0);
+
+    kite_Array arrayC = kite_Array_new(-5);
+
+    kite_Quiz_isOkState("Test create new with negative size success");
+
+    kite_Quiz_isEqualInt("Test arrayC size", kite_Array_getLength(arrayC), 0);
+
+    void* testElementA = kite_Array_pop(arrayC);
+
+    kite_Quiz_isErrorState("Test error on pop from empty array");
+
+    kite_Quiz_isNullPointer("Test popped element from empty array is NULL", 
+        testElementA);
+
+    kite_ErrorState_reset();
+
+    testElementA = kite_Array_getElement(arrayC, 0);
+
+    kite_Quiz_isErrorState("Test error on out-of-bounds access");
+
+    kite_Quiz_isNullPointer("Test out-of-bounds element is NULL", testElementA);
+
+    kite_ErrorState_reset();
+
+    char* valueH = strdup("Casablanca");
+
+    kite_Array_insert(arrayC, 0, valueH);
+
+    kite_Quiz_isOkState("Test insert at pos 0 on empty array success");
+
+    kite_Quiz_isEqualInt("Test post insert arrayC size", 
+        kite_Array_getLength(arrayC), 1);
+
     kite_Array_del(array, &deleter);
+
+    kite_Array_del(arrayB, &deleter);
+
+    kite_Array_del(arrayC, &deleter);
 
     kite_Quiz_isOkState("Test del success");
 

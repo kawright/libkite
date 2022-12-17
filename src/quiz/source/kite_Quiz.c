@@ -583,3 +583,16 @@ void kite_Quiz_isFalse(
         printf("<<%s>> FAILED\n", name);
     }
 }
+
+void kite_Quiz_isNullPointer(
+        char*   name,
+        void*   value) {
+    __testsRun__++;
+    if (value == NULL) {
+        __testsPassed__++;
+        printf("<<%s>> OK\n", name);
+    } else {
+        __testsFailed__++;
+        printf("<<%s>> FAILED\n", name);
+    }
+}
