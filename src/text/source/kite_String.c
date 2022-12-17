@@ -25,3 +25,22 @@ char* kite_String_clone(char* value) {
     }
     return ret;
 }
+
+char* kite_String_capitalize(char* value) {
+
+    char* ret = strdup(value);
+    if (ret == NULL) {
+        kite_ErrorState_setCode(kite_ErrorCode_MEMORY_ALLOCATION);
+        return NULL;
+    }
+    for (int i = 0; i < strlen(ret); i++) {
+        if (kite_Char_isWhitespace(ret[i])) {
+            continue;
+        }
+        if (kite_Char_isLower(ret[i])) {
+            ret[i] = kite_Char_toUpper(ret[i]);
+        }
+        break;
+    }
+    return ret;
+}

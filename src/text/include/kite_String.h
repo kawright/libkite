@@ -17,3 +17,5 @@ COPYRIGHT:  Copyright (c) 2022 Kristoffer A. Wright
 // Throws kite_ErrorCode_MEMORY_ALLOCATION if memory cannot be allocated for the
 // return data.
 char* kite_String_clone(char* value);
+
+char* kite_String_capitalize(char* value);

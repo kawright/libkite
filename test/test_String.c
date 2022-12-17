@@ -6,14 +6,41 @@ int main () {
     
     kite_Quiz_init("kite_String Test Suite");
 
-    char* clone = kite_String_clone("Hello, world");
+    char* clone01 = kite_String_clone("Hello, world");
     
     kite_Quiz_isOkState("Test clone throws no errors");
 
-    kite_Quiz_isEqualString("Test clone is equal to original", clone, 
+    kite_Quiz_isEqualString("Test clone is equal to original", clone01, 
         "Hello, world");
 
-    free(clone);
+    free(clone01);
+
+    char* clone02 = kite_String_capitalize("california");
+
+    kite_Quiz_isOkState("Test capitalize throws no errors 01");
+
+    kite_Quiz_isEqualString("Test success capitalize 01", clone02, 
+        "California");
+
+    free(clone02);
+
+    char* clone03 = kite_String_capitalize("   wyoming");
+
+    kite_Quiz_isOkState("Test capitalize throws no errors 02");
+
+    kite_Quiz_isEqualString("Test success capitalize 02", clone03, 
+        "   Wyoming");
+
+    free(clone03);
+
+    char* clone04 = kite_String_capitalize("*oregon*");
+
+    kite_Quiz_isOkState("Test capitalize throws no errors 03");
+
+    kite_Quiz_isEqualString("Test success capitalize 03", clone04, 
+        "*oregon*");
+
+    free(clone04);
 
     return kite_Quiz_finish();
 
